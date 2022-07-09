@@ -26,7 +26,6 @@ const showMenu = function showMenuOnHover(element: Element) {
 
     itemsArr.forEach((item) => {
       if (item !== "frostwalkermenu") {
-        console.log(strArr);
         const begin = item[0];
         const end = item[item.length - 1];
 
