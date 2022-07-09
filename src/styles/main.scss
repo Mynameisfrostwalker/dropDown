@@ -1,0 +1,17 @@
+@use "sass:color";
+@use "./mixins";
+
+$theme-main: black;
+$theme-accent: color.complement($theme-main);
+
+#menu {
+    @include mixins.size(max-content, max-content, false);
+}
+
+.hamburger {
+  @include mixins.color($theme-main, theme-accent);
+  @include mixins.font(calc(20px + 1vw));
+  @include mixins.size(max-content, max-content, false);
+  @include mixins.box-control(0, 5px);
+
+}

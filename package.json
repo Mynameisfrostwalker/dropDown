@@ -15,7 +15,11 @@
   },
   "keywords": [
     "Dropdown",
-    "Dropdown Menu"
+    "Dropdown Menu", 
+    "Menu", 
+    "dropdown",
+    "menu", 
+    "dropdownmenu"
   ],
   "author": "Mynameisfrostwalker",
   "license": "MIT",
@@ -45,6 +49,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "dropdownmenubyfrostwalker": "^1.1.3"
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1"
   }
 }
