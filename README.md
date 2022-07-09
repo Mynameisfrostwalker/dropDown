@@ -12,5 +12,5 @@ npm install dropdownmenubyfrostwalker
 Create a div with an id of menu and give said div class names corresponding to menu items.
 
 ```html
-    <div id="menu" class="item1 item2 item3 item4"></div>
+    <div id="frostwalkermenu" class="item1 item2 item3 item4"></div>
 ```

@@ -2,16 +2,34 @@
 @use "./mixins";
 
 $theme-main: black;
-$theme-accent: color.complement($theme-main);
+$theme-accent: color.invert($theme-main);
 
-#menu {
+#frostwalkermenu {
     @include mixins.size(max-content, max-content, false);
+    @include mixins.position(relative);
+    @include mixins.transition(transform, 1s, scaleY(1), ease-in-out, 0.2s, ".itemsDiv");
+
+    >.hamburger {
+      @include mixins.color($theme-main, $theme-accent);
+      @include mixins.font(calc(20px + 1vw));
+      @include mixins.size(max-content, max-content, false);
+      @include mixins.box-control(0, 5px);
+    }
+
+    >.itemsDiv {
+      @include mixins.position(absolute, "T", 40px, "L", 0px);
+      @include mixins.list-reset;
+      @include mixins.box-control(0, 30px, none, 10px);
+      @include mixins.color($theme-main, grey);
+
+      transform: scaleY(0);
+      transform-origin: top;
+
+      li {
+        @include mixins.box-control(0, 10px);
+        cursor: pointer;
+      }
+    }
 }
 
-.hamburger {
-  @include mixins.color($theme-main, theme-accent);
-  @include mixins.font(calc(20px + 1vw));
-  @include mixins.size(max-content, max-content, false);
-  @include mixins.box-control(0, 5px);
 
-}

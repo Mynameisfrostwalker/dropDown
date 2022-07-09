@@ -30,8 +30,10 @@
 }
 
 @mixin list-reset {
-    @include box-control(0);
-    list-style-type: none;
+    ul {
+        @include box-control(0);
+        list-style-type: none;
+    }
 }
 
 @mixin font($size, $weight: 500) {
@@ -44,10 +46,27 @@
     background-color: $bgcolor;
 }
 
-@mixin transition($property, $time, $value) {
-    transition: $property $time;
+@mixin transition($property, $time, $value, $function, $delay, $element) {
+    #{$element} {
+        transition: $property $time $function $delay;
+    }
     
-    &:hover {
+    &:hover #{$element} {
         #{$property}: $value;
+    }
+}
+
+@mixin position($position, $TOrB: null, $value1: null, $LOrR: null, $value2: null) {
+    position: $position;
+    @if ($TOrB == "T") {
+        top: $value1;
+    } @else if ($TOrB == "B") {
+        bottom: $value1;
+    }
+
+    @if($LOrR == "L") {
+        left: $value2
+    } @else if ($LOrR == "R") {
+        right: $value2;
     }
 }
