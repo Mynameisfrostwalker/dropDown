@@ -23,8 +23,10 @@ const showMenu = function showMenuOnHover(element: Element) {
     });
 
     itemsArr.forEach((item) => {
-      const itemDiv = createItemElement(item);
-      ul.appendChild(itemDiv);
+      if (item !== "frostwalkermenu") {
+        const itemDiv = createItemElement(item);
+        ul.appendChild(itemDiv);
+      }
     });
 
     element.appendChild(itemsDiv);
@@ -32,7 +34,7 @@ const showMenu = function showMenuOnHover(element: Element) {
 };
 
 const load = function onPageLoadShowIcon() {
-  const menus = document.querySelectorAll("#frostwalkermenu");
+  const menus = document.querySelectorAll(".frostwalkermenu");
 
   menus?.forEach((menu) => {
     const hamburger = document.createElement("div");

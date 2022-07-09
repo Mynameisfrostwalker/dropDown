@@ -4,7 +4,7 @@
 $theme-main: black;
 $theme-accent: color.invert($theme-main);
 
-#frostwalkermenu {
+.frostwalkermenu {
     @include mixins.size(max-content, max-content, false);
     @include mixins.position(relative);
     @include mixins.transition(transform, 1s, scaleY(1), ease-in-out, 0.2s, ".itemsDiv");
