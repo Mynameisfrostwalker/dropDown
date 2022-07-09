@@ -4,7 +4,7 @@
 ## Install
 
 ```bash
-npm install dropdownmenubyfrostwalker
+npm install dropdownmenu-frostwalker
 ```
 
 # Use
