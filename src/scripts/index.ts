@@ -22,10 +22,39 @@ const showMenu = function showMenuOnHover(element: Element) {
       itemsArr.push(item);
     });
 
+    let strArr: string[] = [];
+
     itemsArr.forEach((item) => {
       if (item !== "frostwalkermenu") {
-        const itemDiv = createItemElement(item);
-        ul.appendChild(itemDiv);
+        console.log(strArr);
+        const begin = item[0];
+        const end = item[item.length - 1];
+
+        if (begin === "'" && end === "'") {
+          const itemDiv = createItemElement(item);
+          ul.appendChild(itemDiv);
+          return;
+        }
+
+        if (begin === "'") {
+          strArr.push(item.slice(1));
+          return;
+        }
+
+        if (end === "'" && strArr.length !== 0) {
+          strArr.push(item.slice(0, -1));
+          const itemDiv = createItemElement(strArr.join(" "));
+          ul.appendChild(itemDiv);
+          strArr = [];
+          return;
+        }
+
+        if (strArr.length === 0) {
+          const itemDiv = createItemElement(item);
+          ul.appendChild(itemDiv);
+        } else {
+          strArr.push(item);
+        }
       }
     });
 

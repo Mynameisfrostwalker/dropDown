@@ -24,9 +24,11 @@ $theme-accent: color.invert($theme-main);
 
       transform: scaleY(0);
       transform-origin: top;
+      z-index: 9999;
 
       li {
         @include mixins.box-control(0, 10px);
+        @include mixins.size(max-content);
         cursor: pointer;
       }
     }
