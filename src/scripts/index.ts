@@ -8,7 +8,10 @@ const createItemElement = (item: string) => {
   return li;
 };
 
-const showMenu = function showMenuOnHover(element: Element) {
+const showMenu = function showMenuOnHover(
+  element: Element,
+  mobile: "mobile" | null = null
+) {
   const itemsDiv = document.createElement("div");
   itemsDiv.classList.add("itemsDiv");
   const ul = document.createElement("ul");
@@ -25,7 +28,7 @@ const showMenu = function showMenuOnHover(element: Element) {
     let strArr: string[] = [];
 
     itemsArr.forEach((item) => {
-      if (item !== "frostwalkermenu") {
+      if (item !== "frostwalkermenu" && item !== "frostwalkermobilemenu") {
         const begin = item[0];
         const end = item[item.length - 1];
 
@@ -57,12 +60,40 @@ const showMenu = function showMenuOnHover(element: Element) {
       }
     });
 
+    if (mobile === "mobile") {
+      itemsDiv.classList.add("none");
+    }
+
     element.appendChild(itemsDiv);
+  }
+};
+
+const animateMenu = function showMenuOnClick(e: Event) {
+  const element = e.currentTarget;
+  if (element instanceof HTMLElement) {
+    const itemsDiv = element.nextElementSibling;
+    if (itemsDiv?.classList.contains("small")) {
+      itemsDiv.classList.remove("small");
+    } else {
+      itemsDiv?.classList.add("small");
+    }
   }
 };
 
 const load = function onPageLoadShowIcon() {
   const menus = document.querySelectorAll(".frostwalkermenu");
+  const mobileMenus = document.querySelectorAll(".frostwalkermobilemenu");
+
+  mobileMenus.forEach((menu) => {
+    const hamburger = document.createElement("div");
+    hamburger.classList.add("hamburger");
+    const i = document.createElement("i");
+    i.classList.add("fas", "fa-bars");
+    hamburger.appendChild(i);
+    menu?.appendChild(hamburger);
+    showMenu(menu, "mobile");
+    hamburger.addEventListener("click", animateMenu);
+  });
 
   menus?.forEach((menu) => {
     const hamburger = document.createElement("div");

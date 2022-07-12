@@ -51,7 +51,7 @@
         transition: $property $time $function $delay;
     }
     
-    &:hover #{$element} {
+    #{$element} {
         #{$property}: $value;
     }
 }
