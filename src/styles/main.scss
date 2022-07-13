@@ -35,7 +35,7 @@ $theme-secondary: grey;
 
 div.frostwalkermobilemenu {
   @include mixins.transition(transform, 1s, scale(0, 0), ease-in-out, 0.2s, ".itemsDiv.small");
-  @include mixins.transition(opacity, 2s, 0, ease-in-out, 0.2s, ".itemsDiv .none");
+  @include mixins.transition(opacity, 2s, 0, ease-in-out, 0.2s, ".itemsDiv li", ".itemsDiv .none");
 
   >div.hamburger {
     @include mixins.position(relative);
