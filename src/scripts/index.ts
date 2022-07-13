@@ -34,6 +34,9 @@ const showMenu = function showMenuOnHover(
 
         if (begin === "'" && end === "'") {
           const itemDiv = createItemElement(item);
+          if (mobile === "mobile") {
+            itemDiv.classList.add("none");
+          }
           ul.appendChild(itemDiv);
           return;
         }
@@ -46,6 +49,9 @@ const showMenu = function showMenuOnHover(
         if (end === "'" && strArr.length !== 0) {
           strArr.push(item.slice(0, -1));
           const itemDiv = createItemElement(strArr.join(" "));
+          if (mobile === "mobile") {
+            itemDiv.classList.add("none");
+          }
           ul.appendChild(itemDiv);
           strArr = [];
           return;
@@ -53,6 +59,9 @@ const showMenu = function showMenuOnHover(
 
         if (strArr.length === 0) {
           const itemDiv = createItemElement(item);
+          if (mobile === "mobile") {
+            itemDiv.classList.add("none");
+          }
           ul.appendChild(itemDiv);
         } else {
           strArr.push(item);
@@ -61,7 +70,7 @@ const showMenu = function showMenuOnHover(
     });
 
     if (mobile === "mobile") {
-      itemsDiv.classList.add("none");
+      itemsDiv.classList.add("small");
     }
 
     element.appendChild(itemsDiv);
@@ -70,12 +79,33 @@ const showMenu = function showMenuOnHover(
 
 const animateMenu = function showMenuOnClick(e: Event) {
   const element = e.currentTarget;
+
   if (element instanceof HTMLElement) {
     const itemsDiv = element.nextElementSibling;
+    const ul = itemsDiv?.firstElementChild;
+
     if (itemsDiv?.classList.contains("small")) {
       itemsDiv.classList.remove("small");
+
+      if (ul instanceof HTMLElement) {
+        let i = 0;
+
+        const id = setInterval(() => {
+          ul.children[i].classList.remove("none");
+          i += 1;
+          if (i === ul.children.length) {
+            clearInterval(id);
+          }
+        }, 500);
+      }
     } else {
       itemsDiv?.classList.add("small");
+
+      if (ul instanceof HTMLElement) {
+        for (let i = 0; i < ul.children.length; i += 1) {
+          ul.children[i].classList.add("none");
+        }
+      }
     }
   }
 };

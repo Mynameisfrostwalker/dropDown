@@ -46,13 +46,18 @@
     background-color: $bgcolor;
 }
 
-@mixin transition($property, $time, $value, $function, $delay, $element) {
+@mixin transition($property, $time, $value, $function, $delay, $element, $element2: null) {
     #{$element} {
         transition: $property $time $function $delay;
-    }
-    
-    #{$element} {
-        #{$property}: $value;
+        @if($element2 == null) {
+            #{$property}: $value;
+        }
+    };
+
+    @if($element2) {
+        #{$element2} {
+            #{$property}: $value;
+        }
     }
 }
 

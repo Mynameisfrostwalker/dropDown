@@ -35,7 +35,7 @@ $theme-secondary: grey;
 
 div.frostwalkermobilemenu {
   @include mixins.transition(transform, 1s, scale(0, 0), ease-in-out, 0.2s, ".itemsDiv.small");
-
+  @include mixins.transition(opacity, 2s, 0, ease-in-out, 0.2s, ".itemsDiv .none");
 
   >div.hamburger {
     @include mixins.position(relative);
@@ -48,8 +48,8 @@ div.frostwalkermobilemenu {
     transform: scale(1, 1);
     transform-origin: center;
 
-    &.none {
-      // display: none;
+    li {
+      opacity: 1;
     }
 
     ul {
@@ -59,7 +59,7 @@ div.frostwalkermobilemenu {
 }
 
 .frostwalkermenu {
-  @include mixins.transition(transform, 1s, scaleY(1), ease-in-out, 0.2s, "&hover .itemsDiv");
+  @include mixins.transition(transform, 1s, scaleY(1), ease-in-out, 0.2s, ".itemsDiv", ".hamburger:hover ~ .itemsDiv");
 
   .itemsDiv {
     transform: scaleY(0);
