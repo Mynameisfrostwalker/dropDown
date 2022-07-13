@@ -1,6 +1,6 @@
 {
   "name": "dropdownmenu-frostwalker",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Drop down menu",
   "main": "dist/index.bundle.js",
   "scripts": {

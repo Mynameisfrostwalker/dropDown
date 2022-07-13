@@ -2,7 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: './src/scripts/index.ts',
   },
@@ -27,7 +27,6 @@ module.exports = {
       },
     ],
   },
-  devtool: 'inline-source-map',
   resolve: {
     extensions: ['.js', '.ts'],
   },
@@ -45,9 +44,4 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    }
-  }
 };
